@@ -59,6 +59,32 @@ dataset, training loop and hyperparameters, and differ only in the model.
 | `B2d-joint_window_deep.py` | joint, 3×3 window | mean pool | 256, 6 |
 | `B3-joint_pyramid.py` | joint, pyramid | time-conditioned | 256, 3+3 |
 
+## Model search behind the seven designs
+
+The seven architectures were chosen from a larger search on the full dataset (PyTorch, AMD GPUs, Slurm):
+
+| | |
+|---|---|
+| training runs | 227 |
+| distinct configurations | 100 |
+| architecture families | 19 |
+| component studies on frozen backbones | band embedding, CNN stem, time embedding (10 variants) |
+| seeds per published architecture | 11 |
+
+What the search showed:
+
+- Factorized space–time attention beats joint attention by about four times the seed-to-seed
+  noise, at the same compute: an inductive-bias effect, not a capacity effect.
+- Joint attention only works with a restricted spatial reach (3×3 window); global joint
+  attention dilutes over 1,134 tokens.
+- The causal Perceiver-style readout is the most effective single change for factorized models.
+- The factorized models are capacity-saturated: a 1.1M-parameter model matches a 4.3M one.
+- Negative results: MLP-Mixer and state-space (Mamba/S4-style) spatial mixers,
+  mixture-of-experts feed-forward layers, a learned relative position bias, recurrent-latent
+  bottlenecks and explicit cross-band fusion all did worse.
+- Several single-seed records regressed on reseeding, so every conclusion rests on 3–11 seeds
+  on more than one backbone.
+
 ## Running it
 
 ```bash
