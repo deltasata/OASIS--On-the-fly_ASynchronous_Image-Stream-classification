@@ -1,5 +1,14 @@
 # OASIS — on-the-fly classification of asynchronous image streams
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+**In short:** deep-learning models that classify a stream of images while it arrives: every new
+frame (any of four colour bands, at irregular times) updates the prediction. Seven transformer
+designs are compared on the same data: factorized vs joint space-time attention, windowed and
+pyramid variants and a Perceiver-style readout, with Time2Vec time embeddings and causal masking,
+evaluated at the real 8.5% positive rate. Application: finding rare gravitationally lensed
+supernovae in the Rubin/LSST survey.
+
 Code for:
 
 > **OASIS: On-the-fly ASynchronous Image Stream classification**
@@ -71,3 +80,7 @@ Training writes to `models/runs/<MODEL_ID>/`, keeps the best model by `val_loss`
 and rolls back after `NHOLD` bad epochs.
 
 **This is a smoke test, not a reproduction.**
+
+## License
+
+MIT, see [LICENSE](LICENSE).
