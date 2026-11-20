@@ -2,6 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+<p align="center">
+  <img src="docs/oasis_stream.gif" width="100%" alt="Images of one object arrive one at a time in four colour bands (g, r, i, z) at irregular times; each new image sends attention links back to the same spot in the earlier images.">
+</p>
+<p align="center"><sub>Images arrive one at a time, one colour band each, at irregular times; OASIS attends from each new image back to the earlier ones and updates its prediction. Simulated survey images.
+<a href="https://deltasata.github.io/oasis/">Interactive explorer ↗</a></sub></p>
+
 **In short:** deep-learning models that classify a stream of images while it arrives: every new
 frame (any of four colour bands, at irregular times) updates the prediction. Seven transformer
 designs are compared on the same data: factorized vs joint space-time attention, windowed and
