@@ -88,8 +88,8 @@ What the search showed:
 - Negative results: MLP-Mixer and state-space (Mamba/S4-style) spatial mixers,
   mixture-of-experts feed-forward layers, a learned relative position bias, recurrent-latent
   bottlenecks and explicit cross-band fusion all did worse.
-- Several single-seed records regressed on reseeding, so every conclusion rests on 3–11 seeds
-  on more than one backbone.
+- Several single-seed records regressed on reseeding, so every model was trained with 10+
+  seeds and every conclusion rests on more than one backbone.
 
 ## Running it
 
